@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#02162f; }
+.screen { position:relative; width:100vw; height:100vh; }
+.bg { width:100%; height:100%; object-fit: cover; }
+
+/* =========================================
+   PAPAN SKOR (TEMA LAUT)
+========================================= */
+.score-board {
+    position: absolute;
+    top: 2vw;   
+    right: 2vw; 
+    width: 8vw;    
+    height: 3vw;   
+    font-size: 1.5vw; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 0.5vw;
+    background: #0288D1; /* Warna biru laut */
+    border: 2px solid #FFFFFF; 
+    border-radius: 1.5vw; 
+    font-family: 'Lilita One', cursive;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 0px #01579B; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    z-index: 100;
+}
+
+/* HOTSPOT - Diberi border agar terlihat saat testing */
+.hotspot { 
+    position: absolute; z-index: 5000;
+    background: transparent; 
+    border: none; 
+    cursor: pointer;
+}
+/* Sesuaikan posisi di sini */
+#choiceJelly { left: 12%; top: 35%; width: 18%; height: 37%; }
+#choiceShark { left: 39%; top: 35%; width: 18%; height: 37%; }
+#choiceBoat  { left: 67%; top: 35%; width: 18%; height: 37%; }
+
+#overlay {
+    display: none; position: fixed; top:0; left:0; width:100vw; height:100vh;
+    background: rgba(0, 0, 0, 0.7); z-index: 9000;
+}
+
+#feedbackBox {
+    display: none; 
+    position: fixed; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    /* PENTING: Tentukan ukuran box yang besar */
+    width: 80vw;    /* 80% dari lebar layar */
+    height: 80vh;   /* 80% dari tinggi layar */
+    
+    /* Mengatur agar gambar background menyesuaikan ukuran box */
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: contain; 
+    
+    z-index: 9999;
+}
+
+.actionBtn{
+    position:absolute;
+    left:50%;
+    bottom:575px;
+    transform:translateX(-50%);
+    width:1010px;
+    height:210px;
+    background:transparent;
+    border:none;
+    z-index:10000;
+}
+
+.nextBtn {
+    position: absolute; 
+    bottom: 14%;  /* Menggunakan % agar responsif mengikuti layar */
+    right: 46.5%;   /* Menggunakan % agar jarak dari kanan selalu pas */
+    width: 8vw; /* Menggunakan vw agar proporsional mengecil/membesar */
+    height: 4vw; 
+    
+    /* Gradien pink ceria (mirip palevioletred tapi lebih hidup) */
+    background: linear-gradient(180deg, #ff8da2d2 0%, #d84360 100%);
+    color: white; 
+    font-family: 'Lilita One', 'Comic Sans MS', cursive;
+    font-size: 2vw; 
+    font-weight: bold;
+    border-radius: 50px; 
+    border: 4px solid white;
+    cursor: pointer; 
+    z-index: 10000; 
+
+    /* --- UBAH INI SEMENTARA UNTUK TESTING --- */
+    /* Ganti jadi 'none' lagi nanti jika ingin dimunculkan lewat JavaScript */
+    display: block; 
+
+    /* EFEK 3D GLOSSY */
+    box-shadow: 
+        0 8px 0 #a3223f, /* Bayangan 3D tebal di bawah */
+        0 15px 20px rgba(0,0,0,0.4), /* Bayangan jatuh */
+        inset 0 8px 0 rgba(255,255,255,0.5); /* Kilap di atas */
+        
+    /* Outline teks agar tegas */
+    text-shadow: 2px 2px 0 #a3223f, -1px -1px 0 #a3223f, 1px -1px 0 #a3223f, -1px 1px 0 #a3223f, 2px 2px 0 #a3223f;
+
+    /* Menambahkan animasi berdenyut */
+    animation: tombolDenyut 1.5s infinite;
+    transition: all 0.1s ease;
+}
+
+/* Efek saat tombol DITEKAN (Jelly effect) */
+#nextBtn:active {
+    /* Hanya turun ke bawah (translateY), tidak loncat ke kiri lagi */
+    transform: translateY(8px) scale(0.95);
+    
+    /* Ketebalan 3D menghilang karena ditekan */
+    box-shadow: 
+        0 0 0 #a3223f, 
+        0 5px 10px rgba(0,0,0,0.4), 
+        inset 0 4px 0 rgba(255,255,255,0.6);
+}
+
+
+@keyframes jellyBouncing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}

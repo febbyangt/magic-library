@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#1B5E20; display:flex; justify-content:center; align-items:center; }
+
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; z-index: 0; }
+
+/* =========================================
+   HOTSPOT KARTU GAMBAR
+========================================= */
+.card-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 19.3vw;   /* Sesuaikan lebar kartu */
+    height: 23.3vw;  /* Sesuaikan tinggi kartu */
+    border-radius: 2vw; 
+    cursor: pointer;
+    z-index: 10;
+    
+    /* TAMPILKAN WARNA MERAH INI DULU UNTUK NGEPASIN POSISI, KALAU SUDAH PAS GANTI JADI transparent */
+    background: transparent; 
+    border: none;
+}
+
+/* Perkiraan Posisi 3 Kartu (Kiri, Tengah, Kanan) */
+#btnMonkey { top: 59%; left: 24.7%; }
+#btnTree   { top: 59%; left: 51.7%; }
+#btnTiger  { top: 59%; left: 78.5%; }
+
+/* =========================================
+   ANIMASI JAWABAN (BENAR & SALAH)
+========================================= */
+/* Jika Salah -> Getar-getar */
+.wrong-shake {
+    animation: shake 0.5s ease-in-out;
+    background: rgba(255, 0, 0, 0.4) !important; /* Kedip merah sebentar */
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+    20%, 60% { transform: translate(-50%, -50%) translateX(-1vw); }
+    40%, 80% { transform: translate(-50%, -50%) translateX(1vw); }
+}
+
+/* Jika Benar -> Bersinar Terang */
+.correct-glow {
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 30px #FFD700, inset 0 0 20px #FFF;
+    transition: all 0.3s ease;
+}
+
+
+/* =========================================
+   TOMBOL NEXT (EKSTRA MUNGIL)
+========================================= */
+#nextBtnPopup {
+    position: absolute; /* PERBAIKAN 1: Diganti jadi absolute agar nempel sama pop-up */
+    bottom: 12%; /* Mengikuti kordinat pop-up */
+    left: 50%; /* Taruh di tengah */
+    
+    width: 10vw; height: 3.5vw; 
+    display: flex; justify-content: center; align-items: center; 
+    font-size: 1.8vw; border: 2px solid #FFFFFF; border-radius: 50px; 
+    cursor: pointer; z-index: 1000; 
+    font-family: 'Lilita One', cursive; color: #FFFFFF; letter-spacing: 1px; 
+    text-shadow: 1px 2px 0px #00600F, 0px 0px 5px rgba(255,255,255,0.4);
+    background: linear-gradient(180deg, #048b4ad6 0%, #00c853d2 100%); 
+    box-shadow: 0 4px 0 #008236, 0 6px 10px rgba(108, 4, 4, 0.695), inset 0 2px 0 rgba(255,255,255,0.7);
+    
+    animation: cuteBounceRightExtra 2s infinite ease-in-out; 
+    transition: filter 0.15s ease;
+}
+
+/* PERBAIKAN 2: Karena pakai absolute left 50%, semua animasi harus dipasangi translateX(-50%) agar letaknya tetap di tengah */
+#nextBtnPopup:hover { 
+    filter: brightness(1.1); 
+    animation: none; 
+    transform: translateX(-50%) scale(1.1) rotate(3deg); 
+}
+
+#nextBtnPopup:active { 
+    transform: translateX(-50%) translateY(4px) scale(0.95); 
+    box-shadow: 0 0 0 #008236, 0 3px 6px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.7); 
+}
+
+@keyframes cuteBounceRightExtra {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+    50% { transform: translateX(-50%) translateY(-4px) scale(1.05, 0.95); }
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Efek layar belakang gelap */
+    display: none; /* Disembunyikan di awal */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+/* Wadah penampung gambar pop-up */
+.modal-image-container {
+    position: relative;
+    width: 45vw; /* Ganti angka ini jika gambar pop-upnya dirasa kurang besar/terlalu besar */
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-img {
+    width: 100%;
+    display: block;
+}
+
+/* Hotspot transparan di atas tombol Try Again */
+.hotspot-try-again {
+    position: absolute;
+    /* Perkiraan letak tombol Try Again di gambarmu (sesuaikan nanti) */
+    bottom: 14.7%; 
+    left: 54%;
+    transform: translateX(-50%);
+    width: 23vw;  /* Lebar area klik */
+    height: 5vw;  /* Tinggi area klik */
+    border-radius: 3vw;
+    cursor: pointer;
+    z-index: 10;
+    
+    /* NYALAKAN KOTAK MERAH INI UNTUK NGEPASIN POSISI, LALU UBAH JADI transparent */
+    background: transparent; 
+    border: 2px dashed transparent;
+}
+
+/* Efek kilatan saat diklik biar terasa interaktif */
+.hotspot-try-again:active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animasi Muncul Membal (Pop-in) */
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+/* =========================================
+   PAPAN SKOR (SCOREBOARD)
+========================================= */
+.score-board {
+    position: absolute;
+    top: 3vw; 
+    right: 3vw; /* Taruh di kanan atas */
+    
+    background: #ffa826; /* Warna oranye cerah */
+    border: 3px solid #FFFFFF;
+    border-radius: 2vw;
+    padding: 0.5vw 2vw;
+    
+    font-family: 'Lilita One', cursive;
+    font-size: 2.3vw;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 0px #B26A00;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    z-index: 50;
+    
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}

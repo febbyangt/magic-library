@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Find</title>
+    <link rel="stylesheet" href="../css/space-find.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <!-- Background Kosong -->
+        <img src="../assets/backgrounds/space_find.png" class="bg" alt="Space Background">
+
+        <!-- Kotak Instruksi -->
+        <div class="instruction-box">
+            Find and Tap The <span class="highlight">Moon!</span>
+        </div>
+
+        <!-- Papan Skor -->
+        <div id="scoreBoard">
+            ⭐ <span id="scoreVal">0</span>
+        </div>
+
+        <!-- Audio -->
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+        <audio id="audioWin" src="../assets/audio/excellent.mp3"></audio>
+
+        <!-- ELEMEN LUAR ANGKASA (7 Elemen Sesuai Daftar) -->
+        
+        <!-- Target Benar: Moon -->
+        <img src="../assets/elements/moon.png" id="anim-moon" class="space-sprite float-slow" onclick="checkFind('moon', this)" alt="Moon">
+        
+        <!-- Target Salah -->
+        <img src="../assets/elements/star.png" id="anim-star" class="space-sprite pulse" onclick="checkFind('wrong', this)" alt="Star">
+        <img src="../assets/elements/planet.png" id="anim-planet" class="space-sprite sway" onclick="checkFind('wrong', this)" alt="Planet">
+        <img src="../assets/elements/rocket.png" id="anim-rocket" class="space-sprite float-diagonal" onclick="checkFind('wrong', this)" alt="Rocket">
+        <img src="../assets/elements/alien.png" id="anim-alien" class="space-sprite hover-up-down" onclick="checkFind('wrong', this)" alt="Alien UFO">
+        <img src="../assets/elements/astronaut_read.png" id="anim-astro-read" class="space-sprite bobbing" onclick="checkFind('wrong', this)" alt="Astronaut Reading">
+        <img src="../assets/elements/astronaut_float.png" id="anim-astro-float" class="space-sprite tumble" onclick="checkFind('wrong', this)" alt="Astronaut Floating">
+        <img src="../assets/elements/ufo.png" id="anim-ufo" class="space-sprite hover-up-down" onclick="checkFind('wrong', this)" alt="UFO">
+
+        <!-- Pop-Up Modal -->
+        <div id="overlay"></div>
+        <div id="feedbackBox">
+            <button id="tryAgainBtn" class="actionBtn" onclick="closeFeedback()"></button>
+            <button id="nextBtn" class="nextBtn" onclick="window.location.href='./space-complete.html'">COMPLETE</button>
+        </div>
+    </div>
+    
+    <script src="../js/space-find.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

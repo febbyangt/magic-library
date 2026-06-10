@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocean Look & Choose</title>
+    <link rel="stylesheet" href="../css/ocean-look.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen">
+        <div id="overlay"></div> 
+        
+        <img src="../assets/backgrounds/ocean_look.jpg" class="bg" alt="Ocean Background">
+        
+        <div class="score-board">
+            ⭐ <span id="score-text">0</span>
+        </div>
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+
+        <button id="choiceJelly" class="hotspot" onclick="showFeedback(false)"></button>
+        <button id="choiceShark" class="hotspot" onclick="showFeedback(true)"></button>
+        <button id="choiceBoat" class="hotspot" onclick="showFeedback(false)"></button>
+
+        <div id="feedbackBox">
+            <button id="tryAgainBtn" class="actionBtn" onclick="handleAction()"></button>
+            <button id="nextBtn" class="nextBtn" onclick="window.location.href='./ocean-match.html'">NEXT</button>
+        </div>
+    </div>
+    
+    <script src="../js/ocean-look.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

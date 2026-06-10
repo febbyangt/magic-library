@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocean Find Word</title>
+    <link rel="stylesheet" href="../css/ocean-find.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/ocean_background.png" class="bg" alt="Ocean Background">
+
+        <div class="instruction-box">
+            Find and tap the <br> <span class="highlight">JELLYFISH !</span>
+        </div>
+
+        <div id="scoreBoard">⭐ : <span id="scoreVal">0</span></div>
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+        <audio id="audioWin" src="../assets/audio/excellent.mp3"></audio>
+
+        <img src="../assets/elements/jellyfish.png" id="anim-jellyfish" class="animal-sprite float-slow" onclick="checkFind('jellyfish')" alt="Jellyfish">
+        
+        <img src="../assets/elements/shark.png" id="anim-shark" class="animal-sprite swim-horizontal" onclick="checkFind('wrong')" alt="Shark">
+        <img src="../assets/elements/turtle.png" id="anim-turtle" class="animal-sprite swim-slow" onclick="checkFind('wrong')" alt="Turtle">
+        <img src="../assets/elements/seahorse.png" id="anim-seahorse" class="animal-sprite sway" onclick="checkFind('wrong')" alt="Seahorse">
+        <img src="../assets/elements/starfish.png" id="anim-starfish" class="animal-sprite pulse" onclick="checkFind('wrong')" alt="Starfish">
+        <img src="../assets/elements/crab.png" id="anim-crab" class="animal-sprite side-to-side" onclick="checkFind('wrong')" alt="Crab">
+        <img src="../assets/elements/boat.png" id="anim-boat" class="animal-sprite bobbing" onclick="checkFind('wrong')" alt="Boat">
+
+        <div id="overlay"></div>
+        <div id="feedbackBox">
+            <button id="tryAgainBtn" class="actionBtn" onclick="closeFeedback()"></button>
+            <button id="nextBtn" class="nextBtn" onclick="window.location.href='./ocean-complete.html'">COMPLETE</button>
+        </div>
+    </div>
+    
+    <script src="../js/ocean-find.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

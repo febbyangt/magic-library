@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle - Fill the Letter</title>
+    <link rel="stylesheet" href="../css/jungle-fill.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/jungle_fill.png" class="bg" alt="Jungle Fill Background">
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+
+        <div class="score-board">
+            ⭐ <span id="score-text">0</span>
+        </div>
+
+        <div class="filled-letter" id="fill-monkey">O</div>
+
+        <button class="circle-hotspot monkey-opt" id="btn-m-i" onclick="checkLetter('monkey', false)"></button>
+        <button class="circle-hotspot monkey-opt" id="btn-m-a" onclick="checkLetter('monkey', false)"></button>
+        <button class="circle-hotspot monkey-opt" id="btn-m-o" onclick="checkLetter('monkey', true, 'O')"></button>
+
+        <div class="filled-letter" id="fill-flower">W</div>
+
+        <button class="circle-hotspot flower-opt" id="btn-f-w" onclick="checkLetter('flower', true, 'W')"></button>
+        <button class="circle-hotspot flower-opt" id="btn-f-r" onclick="checkLetter('flower', false)"></button>
+        <button class="circle-hotspot flower-opt" id="btn-f-l" onclick="checkLetter('flower', false)"></button>
+
+        <div id="wrongModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_tryagain.png" alt="Oops Try Again" class="popup-img">
+                <button class="hotspot-try-again" onclick="closeModal()"></button>
+            </div>
+        </div>
+
+        <div id="correctModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_excellent.png" alt="Success!" class="popup-img">
+                <button id="nextBtnPopup" onclick="window.location.href='./jungle-listen.html'">NEXT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jungle-fill.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

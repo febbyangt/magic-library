@@ -1,0 +1,34 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#020b1e; }
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; margin: auto; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; }
+
+.hotspot {
+    position: absolute;
+    width: 6vw; 
+    height: 6vw;
+    border-radius: 50%; /* Ini kuncinya agar hotspot menjadi bulat sempurna */
+    background: transparent; 
+    border: none; 
+    cursor: pointer; 
+    z-index: 10;
+}
+/* Koordinat Speaker (Sesuaikan sedikit jika meleset) */
+#btn-star   { top: 69%; left: 14.5%; }
+#btn-moon   { top: 69%; left: 36.5%; }
+#btn-planet { top: 69%; left: 58.9%; }
+#btn-rocket { top: 69%; left: 82.5%; }
+
+.next-btn {
+    position: absolute; bottom: 3%; right: 43%;
+    width: 8vw; height: 4vw; background: rgba(86, 2, 111, 0.736);
+    color: white; font-family: 'Lilita One', 'Comic Sans MS', cursive;
+    font-size: 1.8vw; border-radius: 5vw; border: 4px solid white;
+    cursor: pointer; z-index: 20;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}

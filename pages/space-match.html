@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Match Word</title>
+    <link rel="stylesheet" href="../css/space-match.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/space_match.png" class="bg" alt="Space Match Background">
+
+        <div id="scoreBoard">
+            ⭐ <span id="scoreVal">0</span>
+        </div>
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+        <audio id="audioWin" src="../assets/audio/excellent.mp3"></audio>
+
+        <div class="words-container">
+            <div class="word-box" draggable="true" id="word-planet" data-match="planet">PLANET</div>
+            <div class="word-box" draggable="true" id="word-rocket" data-match="rocket">ROCKET</div>
+            <div class="word-box" draggable="true" id="word-moon" data-match="moon">MOON</div>
+            <div class="word-box" draggable="true" id="word-star" data-match="star">STAR</div>
+        </div>
+
+        <div class="drop-zone" id="zone-moon" data-match="moon"></div>
+        <div class="drop-zone" id="zone-planet" data-match="planet"></div>
+        <div class="drop-zone" id="zone-star" data-match="star"></div>
+        <div class="drop-zone" id="zone-rocket" data-match="rocket"></div>
+
+        <div id="overlay"></div>
+        <div id="feedbackBox">
+            <button id="tryAgainBtn" class="actionBtn" onclick="closeFeedback()"></button>
+            <button id="nextBtn" class="nextBtn" onclick="window.location.href='./space-fill.html'">NEXT</button>
+        </div>
+    </div>
+    
+    <script src="../js/space-match.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

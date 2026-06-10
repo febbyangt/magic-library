@@ -1,0 +1,37 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#020b1e; }
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; margin: auto; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; }
+
+.start-btn {
+    position: absolute;
+    bottom: 6%; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 9vw;
+    height: 4vw;
+    font-family: 'Lilita One', cursive;
+    font-size: 1.5vw;
+    color: white;
+    background: linear-gradient(180deg, #4c016f, #59099f);
+    border: 4px solid white;
+    border-radius: 5vw;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #6302b3;
+    
+    /* Animasi Jelly */
+    animation: jellyBouncing 2s infinite;
+    transition: all 0.1s ease;
+    z-index: 20;
+}
+
+.start-btn:active {
+    transform: translateX(-50%) translateY(8px);
+    box-shadow: 0 0 0 transparent;
+}
+
+@keyframes jellyBouncing {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+}

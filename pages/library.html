@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Library</title>
+    
+    <link rel="stylesheet" href="../css/library.css">
+    <link rel="stylesheet" href="../css/global-bgm.css"> 
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+
+<body>
+
+    <div class="library-container">
+
+        <img src="../assets/backgrounds/library_background.png" class="bg" alt="Library Background">
+
+        <div class="dialog-box">
+            <div class="name-badge">Leo</div>
+            <div class="dialog-text">
+                <p class="line1">Welcome, Young Explorer!</p>
+                <p class="line2">The magic books are waiting for you.</p>
+                <p class="line3">Choose a world and begin your adventure!</p>
+            </div>
+            <div class="dialog-arrow"></div>
+        </div>
+
+        <img src="../assets/characters/character_main.png" id="leo" alt="Main Character Leo">
+
+        <img src="../assets/books/ocean book.png" id="oceanBook" alt="Ocean World Book" onclick="window.location.href='./ocean.html'" style="cursor: pointer;">
+        <img src="../assets/elements/ocean_checked.png" id="oceanCheck" class="badge-ceklis" alt="Ocean Selesai">
+        
+        <img src="../assets/books/space book.png" id="spaceBook" alt="Space World Book" onclick="window.location.href='./space-world.html'" style="cursor: pointer;"> 
+        <img src="../assets/elements/space_checked.png" id="spaceCheck" class="badge-ceklis" alt="Space Selesai">
+        
+        <img src="../assets/books/jungle book.png" id="jungleBook" alt="Jungle World Book" onclick="window.location.href='./jungle-world.html'" style="cursor: pointer;">
+        <img src="../assets/elements/jungle_checked.png" id="jungleCheck" class="badge-ceklis" alt="Jungle Selesai">
+
+    </div>
+
+    <!-- ================= AUDIO TEROMPET PERAYAAN ================= -->
+    <audio id="trumpetSound" src="../assets/audio/trumpet.mp3"></audio>
+
+    <!-- ================= POP-UP ENDING (PERAYAAN TAMAT) ================= -->
+    <div id="endingModal" class="modal-overlay" style="display: none;">
+        <div class="ending-box">
+            
+            <button id="btnCloseEnding" class="btn-close-popup">✖</button>
+
+            <h1 class="ending-title">🎉 YOU ARE A MASTER EXPLORER! 🎉</h1>
+            <p class="ending-text">Congratulations! You have completed all the magic worlds and learned so many new English words. You did a great job!</p>
+            
+            <div class="badges-showcase">
+                <img src="../assets/elements/ocean_checked.png" alt="Ocean Badge">
+                <img src="../assets/elements/space_checked.png" alt="Space Badge">
+                <img src="../assets/elements/jungle_checked.png" alt="Jungle Badge">
+            </div>
+            
+            <button id="btnPlayAgainGlobal" class="btn-action orange">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="../js/library.js"></script>
+    <script src="../js/global-bgm.js"></script> 
+    <script src="../js/global-wrap.js"></script> 
+
+</body>
+
+</html>

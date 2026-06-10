@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Jungle - Introduce</title>
+    <link rel="stylesheet" href="../css/jungle-introduce.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/jungle_introduce.png" class="bg" alt="Jungle Introduce Background">
+
+        <audio id="audioTiger" src="../assets/audio/tiger.mp3"></audio>
+        <audio id="audioFlower" src="../assets/audio/flower.mp3"></audio>
+        <audio id="audioMonkey" src="../assets/audio/monkey.mp3"></audio>
+        <audio id="audioTree" src="../assets/audio/tree.mp3"></audio>
+
+        <button class="speaker-hotspot" id="btnTiger" onclick="playVocab('Tiger')"></button>
+        <button class="speaker-hotspot" id="btnFlower" onclick="playVocab('Flower')"></button>
+        <button class="speaker-hotspot" id="btnMonkey" onclick="playVocab('Monkey')"></button>
+        <button class="speaker-hotspot" id="btnTree" onclick="playVocab('Tree')"></button>
+
+        <button id="nextBtn" class="btn-action green" onclick="window.location.href='./jungle-look.html'">NEXT</button>
+    </div>
+
+    <script src="../js/jungle-introduce.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

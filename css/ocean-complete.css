@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#02162f; font-family: 'Lilita One', cursive; }
+
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; overflow: hidden; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; }
+
+
+.book-content {
+    position: absolute;
+    top: 32%; left: 32%; width: 40%;
+    text-align: center;
+    background: transparent; /* Putih transparan biar elegan */
+    padding: 2vw;
+    border-radius: 30px;
+    border: 3px solid transparent;
+    z-index: 5;
+}
+
+.mission-title { font-size: 3vw; color: #4A148C; margin-bottom: 0.3vw; }
+.score-val { color: #D84315; font-size: 3.9vw; }
+.total-score-label {
+    font-size: 4vw;
+    color: #5D4037;
+}
+.stars-row { display: flex; justify-content: center; gap: 0.3vw; margin: 0.3vw 0; }
+.star-icon { font-size: 3vw; color: #0c0e01; transform: scale(0); transition: 0.5s; }
+.star-icon.pop-animation { transform: scale(1); }
+
+.reward-box { 
+    background: transparent; 
+    border-radius: 15px; padding: 0.8vw; margin-top: 0.5vw;
+}
+.score-area {
+    display: flex;
+    justify-content: center;
+    align-items: baseline; /* Menjaga agar tulisan tetap sejajar rata bawah */
+    gap: 1vw; /* Jarak antara tulisan TOTAL SCORE dan angka 500 */
+    margin: 1.5vw 0;
+}
+
+/* INI DIA TEMPAT MEMBESARKAN TEKS HITAMNYA */
+.label-skor {
+    font-size: 2vw; /* 🔥 NAIKKAN ANGKA 3vw INI JIKA MASIH KURANG BESAR (misal: 4vw) */
+    color: #5D4037; /* Warna cokelat gelap (bukan hitam pekat) agar lebih menyatu dengan buku */
+    font-family: 'Lilita One', cursive;
+}
+.reward-label { font-size: 1.6vw; color: #5D4037; font-weight: bold; }
+.items-row { display: flex; justify-content: center; gap: 1vw; font-size: 1.5vw; }row { display: flex; justify-content: center; gap: 1.5vw; margin-top: 0.5vw; font-size: 1.2vw; }
+
+/* =========================================
+   TOMBOL NAVIGASI BAWAH (GAYA JELLY 3D KARTUN)
+========================================= */
+.button-row { 
+    position: absolute; 
+    bottom: 7%; 
+    left: 53%; 
+    transform: translateX(-50%); 
+    display: flex; 
+    
+    /* UBAH ANGKA INI UNTUK MENGATUR JARAK ANTAR TOMBOL */
+    /* Semakin besar angkanya, semakin jauh jarak kanan-kiri antar tombol */
+    gap: 2.8vw; 
+    
+    z-index: 100; 
+}
+
+.btn-action { 
+    /* UBAH ANGKA INI UNTUK MENGATUR UKURAN DALAM TOMBOL */
+    /* 1vw = jarak atas-bawah (tinggi) | 2vw = jarak kanan-kiri (lebar) */
+    /* Ubah angka 2vw menjadi lebih besar (misal 4vw) jika ingin tombolnya lebih memanjang ke samping */
+    padding: 1vw 2vw; 
+    
+    /* Opsional: Kamu juga bisa memaksa lebar minimum tombol jika ingin ukurannya seragam semua */
+    /* min-width: 15vw; */
+
+    font-family: 'Lilita One', cursive; 
+    font-size: 1.4vw; 
+    color: white; 
+    border: 4px solid white; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    text-shadow: 1px 2px 0px rgba(0,0,0,0.4);
+    
+    /* Transisi halus untuk semua perubahan */
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* Animasi mengayun pelan saat diam */
+    animation: idleBounce 2.5s infinite ease-in-out;
+}
+
+/* Mengatur Warna dan Bayangan 3D Tebal masing-masing tombol */
+/* Kita berikan delay animasi berbeda agar bergeraknya bergantian (wave effect) */
+.btn-action.orange { 
+    background: linear-gradient(180deg, #084ff4b6, #00f5d8b5); 
+    box-shadow: 0 8px 0 #0023e6, 0 15px 20px rgba(0,0,0,0.3); 
+    animation-delay: 0s;
+}
+.btn-action.green  { 
+    background: linear-gradient(180deg, #81c784b7, #0a640f); 
+    box-shadow: 0 8px 0 #1B5E20, 0 15px 20px rgba(0,0,0,0.3);
+    animation-delay: 0.15s;
+}
+.btn-action.blue   { 
+    background: linear-gradient(180deg, #480ccaa5, #500271); 
+    box-shadow: 0 8px 0 #160259, 0 15px 20px rgba(0,0,0,0.3);
+    animation-delay: 0.3s;
+}
+
+/* Efek saat mouse diarahkan (Hover) - Tombol sedikit membesar dan terang */
+.btn-action:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+    /* Hentikan ayunan saat di-hover agar mudah diklik */
+    animation-play-state: paused; 
+}
+
+/* Efek saat diklik (Active) - Tombol amblas / squish */
+.btn-action:active { 
+    transform: translateY(8px) scale(0.95); 
+    box-shadow: 0 0 0 transparent, 0 5px 10px rgba(0,0,0,0.4); 
+    transition: all 0.05s ease; /* Transisi dipercepat saat diklik */
+}
+
+/* Keyframes untuk tombol yang diam (mengayun/napas) */
+@keyframes idleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}

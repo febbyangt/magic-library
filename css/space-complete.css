@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#020b1e; font-family: 'Lilita One', cursive; }
+
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; overflow: hidden; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; }
+
+/* Posisi disesuaikan agar pas di atas papan gambar space-complete.png */
+.board-content {
+    position: absolute;
+    top: 40%; 
+    left: 36%; 
+    width: 70;
+    text-align: center;
+    z-index: 5;
+}
+
+/* Warna disesuaikan dengan tema Space (Ungu, Biru Neon, Putih, Emas) */
+.mission-title { font-size: 4vw; color: #810791; margin-bottom: 0.3vw; text-shadow: 2px 2px 0px #FFF, -2px -2px 0px #FFF, 2px -2px 0px #FFF, -2px 2px 0px #FFF; }
+.score-val { color: #41079e; font-size: 4.5vw; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+
+.stars-row { display: flex; justify-content: center; gap: 0.5vw; margin: 0.5vw 0; }
+.star-icon { font-size: 3.5vw; color: #000000; transform: scale(0); transition: 0.5s; text-shadow: 0 0 15px #FF9800, 2px 2px 0px #000; }
+.star-icon.pop-animation { transform: scale(1); }
+
+.score-area { display: flex; justify-content: center; align-items: baseline; gap: 1vw; margin: 1vw 0; }
+.label-skor { font-size: 2.2vw; color: #250202; text-shadow: 2px 2px 4px #000; }
+.reward-label { font-size: 2.5vw; color: #2e0b5b; font-weight: bold; text-shadow: 1px 1px 2px #000; }
+.items-row { display: flex; justify-content: center; gap: 2vw; font-size: 2vw; color: #550202; text-shadow: 1px 1px 2px #000; }
+
+/* Tombol Navigasi (Sama Persis dengan Jungle) */
+.button-row { position: absolute; bottom: 5%; left: 55%; transform: translateX(-50%); display: flex; gap: 10vw; z-index: 100; }
+.btn-action { 
+    padding: 1vw 2vw; font-family: 'Lilita One', cursive; font-size: 1.8vw; color: white; 
+    border: 4px solid white; border-radius: 50px; cursor: pointer; text-shadow: 1px 2px 0px rgba(0,0,0,0.4);
+    transition: all 0.2s; animation: idleBounce 2.5s infinite ease-in-out;
+}
+.btn-action.orange { background: linear-gradient(180deg, #3e035abe, #9700f593); box-shadow: 0 8px 0 #370042; }
+.btn-action.blue   { background: linear-gradient(180deg, #3e035abe, #9700f593); box-shadow: 0 8px 0 #01579B; }
+.btn-action:hover { transform: scale(1.08); animation-play-state: paused; }
+.btn-action:active { transform: translateY(8px) scale(0.95); box-shadow: none; }
+
+@keyframes idleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}

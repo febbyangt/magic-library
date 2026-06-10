@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#020b1e; }
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; margin: auto; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; z-index: 0; }
+
+/* =========================================
+   KOTAK INSTRUKSI
+========================================= */
+.instruction-box {
+    position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
+    background: rgba(25, 30, 80, 0.7); 
+    border-radius: 1vw; padding: 1vw 3vw; text-align: center; 
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.5vw; color: white; font-weight: bold; z-index: 50;
+}
+.highlight { color: #fdfd00; font-family: 'Lilita One', cursive; font-size: 3vw; letter-spacing: 2px;}
+
+/* =========================================
+   PAPAN SKOR
+========================================= */
+#scoreBoard {
+    position: absolute; top: 3%; right: 3%; padding: 0.5vw 1.5vw; border-radius: 2vw;
+    background: linear-gradient(180deg, #5f06bf 0%, #651c83 100%); border: 3px solid #ffffff;
+    font-family: 'Lilita One', cursive; font-size: 1.5vw; color: white; letter-spacing: 1px; z-index: 5000; 
+    box-shadow: 0 4px 0 #01579B, 0 6px 10px rgba(0, 0, 0, 0.3), inset 0 4px 0 rgba(255, 255, 255, 0.6); 
+    text-shadow: 1.5px 1.5px 0 #01579B, -1px -1px 0 #01579B, 1px -1px 0 #01579B, -1px 1px 0 #01579B, 1px 1px 0 #01579B;
+    animation: ayunSkor 3s ease-in-out infinite;
+}
+@keyframes ayunSkor {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* =========================================
+   ELEMEN LUAR ANGKASA & POSISI
+========================================= */
+.space-sprite {
+    position: absolute; cursor: pointer; z-index: 20;
+    transition: filter 0.2s ease;
+}
+.space-sprite:hover { filter: brightness(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+
+/* Posisi 7 Elemen Sesuai Screenshot */
+#anim-star           { top: 5%;    left: 42%; width: 15vw; }
+#anim-moon           { top: 8%;   left: 69%; width: 14vw; }
+#anim-planet         { top: 30%;   left: 13%; width: 9vw; }
+#anim-rocket         { top: 51%;   left: 18%; width: 22vw; }
+#anim-alien          { bottom: 2%; left: 64%;  width: 15vw; }
+#anim-astro-read     { bottom: 4%; left: 40%; width: 23vw; }
+#anim-astro-float    { top: 38%;   right: 3%; width: 24vw; }
+
+/* =========================================
+   ANIMASI CSS UNTUK ELEMEN SPACE
+========================================= */
+.float-slow { animation: floatAnim 4s ease-in-out infinite; }
+@keyframes floatAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+.pulse { animation: pulseAnim 3s ease-in-out infinite; }
+@keyframes pulseAnim { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+.sway { animation: swayAnim 6s ease-in-out infinite; transform-origin: center; }
+@keyframes swayAnim { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+
+.float-diagonal { animation: diagAnim 4s ease-in-out infinite; }
+@keyframes diagAnim { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-10px, -10px); } }
+
+.hover-up-down { animation: hoverAnim 3.5s ease-in-out infinite; }
+@keyframes hoverAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.bobbing { animation: bobbingAnim 4s ease-in-out infinite; }
+@keyframes bobbingAnim { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(3deg); } }
+
+.tumble { animation: tumbleAnim 8s linear infinite; }
+@keyframes tumbleAnim { 0% { transform: rotate(0deg) translateY(0); } 50% { transform: rotate(15deg) translateY(-10px); } 100% { transform: rotate(0deg) translateY(0); } }
+
+/* =========================================
+   EFEK BENAR / SALAH
+========================================= */
+.correct-glow { filter: drop-shadow(0 0 20px #00FF00) brightness(1.2) !important; }
+.wrong-shake { animation: shake 0.5s !important; }
+@keyframes shake {
+    0% { transform: translateX(0); filter: drop-shadow(0 0 20px red); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); filter: drop-shadow(0 0 20px red); }
+}
+
+/* =========================================
+   POP-UP MODAL & TOMBOL SELESAI
+========================================= */
+#overlay { display: none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0, 0, 0, 0.7); z-index: 9000; }
+#feedbackBox { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45vw; height: 35vw; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 9999; }
+
+.actionBtn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 25vw; height: 12vw; background: transparent; border: none; cursor: pointer; z-index: 10000;
+}
+
+.nextBtn {
+    position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+    width: 12vw; height: 4vw; background: rgba(53, 2, 123, 0.723); color: white; 
+    font-family: 'Lilita One', cursive; font-size: 1.9vw; font-weight: bold;
+    border-radius: 5vw; border: 4px solid white; cursor: pointer; z-index: 10000; display: none;
+    animation: jellyBouncing 2s infinite; transition: all 0.1s ease;
+}
+
+.nextBtn:active {
+    transform: translateX(-50%) translateY(8px);
+    box-shadow: 0 0 0 #006b9e, 0 5px 5px rgba(0, 0, 0, 0.3), inset 0 4px 0 rgba(255, 255, 255, 0.5);
+}
+
+@keyframes jellyBouncing {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+}
+/* Posisi UFO di pojok kiri bawah */
+#anim-ufo { 
+    bottom: 3%; 
+    left: 3%;  
+    width: 15vw; /* Sesuaikan ukuran jika UFO-nya kebesaran/kekecilan */
+}
+
+/* Jika animasi naik-turun ini belum ada di CSS-mu, tambahkan juga: */
+.hover-up-down { 
+    animation: hoverAnim 3.5s ease-in-out infinite; 
+}
+
+@keyframes hoverAnim { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-10px); } 
+}

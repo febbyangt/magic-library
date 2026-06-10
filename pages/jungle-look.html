@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Jungle - Look & Choose</title>
+    <link rel="stylesheet" href="../css/jungle-look.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/jungle_look.png" class="bg" alt="Jungle Look Background">
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+
+        <button class="card-hotspot" id="btnMonkey" onclick="checkAnswer('Monkey', this)"></button>
+        <button class="card-hotspot" id="btnTree" onclick="checkAnswer('Tree', this)"></button>
+        <button class="card-hotspot" id="btnTiger" onclick="checkAnswer('Tiger', this)"></button>
+        
+        <div class="score-board">
+            ⭐ <span id="score-text">0</span>
+        </div>
+
+        <div id="wrongModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_feedback.png" alt="Oops Try Again" class="popup-img">
+                <button class="hotspot-try-again" onclick="closeModal()"></button>
+            </div>
+        </div>
+
+        <div id="correctModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_success.png" alt="Success!" class="popup-img">
+                <button id="nextBtnPopup" onclick="window.location.href='./jungle-match.html'">NEXT</button>
+            </div>
+        </div>
+    </div> <script src="../js/jungle-look.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

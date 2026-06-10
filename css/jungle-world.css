@@ -1,0 +1,48 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { 
+    width: 100%; height: 100%; 
+    overflow: hidden; 
+    background: #02162f; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.screen { 
+    position: relative; 
+    width: 100vw; 
+    height: 56.25vw; 
+    max-height: 100vh; 
+    max-width: 177.78vh; 
+}
+
+.bg { 
+    width: 100%; height: 100%; 
+    position: absolute; top: 0; left: 0; 
+    z-index: 0; 
+}
+
+/* =========================================
+   AREA KLIK TOMBOL START
+========================================= */
+.hotspot-start {
+    position: absolute;
+    /* Perkiraan posisi tombol Start di gambar */
+    top: 92%; 
+    left: 51.8%; 
+    transform: translate(-50%, -50%);
+    width: 12vw;  /* Lebar area klik */
+    height: 4.1vw;  /* Tinggi area klik */
+    border-radius: 2vw; 
+    cursor: pointer;
+    z-index: 10;
+    
+    /* GANTI BACKGROUND MENJADI 'transparent' DAN BORDER 'none' JIKA POSISI SUDAH PAS */
+    background: transparent; 
+    border: 2px dashed transparent;
+}
+
+/* Efek kilatan cahaya sedikit saat tombol diklik */
+.hotspot-start:active {
+    background: transparent;
+}

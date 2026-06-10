@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#020b1e; }
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; margin: auto; display:flex; justify-content:center; align-items:center; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; z-index: 0; }
+
+/* =========================================
+   PAPAN SKOR
+========================================= */
+#scoreBoard {
+    position: absolute; top: 3%; right: 3%; padding: 0.5vw 1.5vw; border-radius: 2vw;
+    background: linear-gradient(180deg, #c21aff 0%, #9c03a4 100%); border: 3px solid #ffffff;
+    font-family: 'Lilita One', cursive; font-size: 1.8vw; color: white; letter-spacing: 1px; z-index: 5000; 
+    box-shadow: 0 4px 0 #01579B, 0 6px 10px rgba(0, 0, 0, 0.3), inset 0 4px 0 rgba(255, 255, 255, 0.6); 
+    text-shadow: 1.5px 1.5px 0 #01579B, -1px -1px 0 #01579B, 1px -1px 0 #01579B, -1px 1px 0 #01579B, 1px 1px 0 #01579B;
+    animation: ayunSkor 3s ease-in-out infinite;
+}
+@keyframes ayunSkor {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* =========================================
+   HOTSPOT TOMBOL PILIHAN
+========================================= */
+.hotspot {
+    position: absolute;
+    width: 21vw; 
+    height: 40%;
+    border-radius: 3vw; /* Membuat tepinya melengkung mengikuti gambar */
+    cursor: pointer;
+    z-index: 10;
+    
+    /* Ganti menjadi 'border: 2px dashed red;' sementara jika ingin mengecek posisinya */
+    background: transparent; 
+    border: none; 
+}
+
+/* Koordinat Kotak Pilihan */
+#choiceStar   { top: 43%; left: 11.2%; }
+#choiceMoon   { top: 43%; left: 40.5%; }
+#choiceRocket { top: 43%; left: 71.2%; }
+
+/* =========================================
+   POP-UP MODAL & TOMBOL NEXT
+========================================= */
+#overlay { display: none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0, 0, 0, 0.7); z-index: 9000; }
+#feedbackBox { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45vw; height: 35vw; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 9999; }
+
+.actionBtn {
+    position: absolute; top: 58%; left: 50%; transform: translate(-50%, -50%);
+    width: 34vw; height: 22vw; background: transparent; border: none; cursor: pointer; z-index: 10000;
+}
+
+/* =========================================
+   PERBAIKAN TOMBOL NEXT (Agar tetap di dalam pop-up)
+========================================= */
+.nextBtn {
+    position: absolute; 
+    bottom: 2%; /* Jarak dari bawah pop-up */
+    left: 50%;  /* Geser ke tengah */
+    transform: translateX(-50%); /* Kunci tepat di tengah */
+    
+    /* Menggunakan ukuran responsif (vw) alih-alih px */
+    width: 10vw; 
+    height: 4vw; 
+    background: rgba(78, 0, 146, 0.567);
+    color: white; 
+    font-family: 'Lilita One', cursive; 
+    font-size: 2vw; 
+    font-weight: bold;
+    border-radius: 5vw; 
+    border: 4px solid white;
+    cursor: pointer; 
+    z-index: 10000; 
+    display: none;
+    
+    /* Animasi Jelly yang sudah disesuaikan dengan posisi tengah */
+    animation: jellyBouncing 2s infinite; 
+    transition: all 0.1s ease;
+}
+
+.nextBtn:active {
+    /* Saat ditekan, tombol amblas sedikit ke bawah */
+    transform: translateX(-50%) translateY(8px);
+    box-shadow: 0 0 0 #006b9e, 0 5px 5px rgba(0, 0, 0, 0.3), inset 0 4px 0 rgba(255, 255, 255, 0.5);
+}
+
+@keyframes jellyBouncing {
+    /* Animasi membesar/mengecil sambil tetap di tengah */
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Introduce</title>
+    <link rel="stylesheet" href="../css/space-introduce.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen">
+        <img src="../assets/backgrounds/space_introduce.png" class="bg" alt="Space Introduce">
+
+        <button class="hotspot" id="btn-star" onclick="playSound('star')"></button>
+        <button class="hotspot" id="btn-moon" onclick="playSound('moon')"></button>
+        <button class="hotspot" id="btn-planet" onclick="playSound('planet')"></button>
+        <button class="hotspot" id="btn-rocket" onclick="playSound('rocket')"></button>
+
+        <audio id="audio-star" src="../assets/audio/star.mp3"></audio>
+        <audio id="audio-moon" src="../assets/audio/moon.mp3"></audio>
+        <audio id="audio-planet" src="../assets/audio/planet.mp3"></audio>
+        <audio id="audio-rocket" src="../assets/audio/rocket.mp3"></audio>
+
+        <button class="next-btn" onclick="window.location.href='./space-look.html'">NEXT</button>
+    </div>
+    
+    <script src="../js/space-introduce.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

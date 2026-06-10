@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; background:#1B5E20; display:flex; justify-content:center; align-items:center; }
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; z-index: 0; pointer-events: none; }
+
+/* =========================================
+   PAPAN SKOR
+========================================= */
+.score-board {
+    position: absolute;
+    top: 2vw;   
+    right: 2vw; 
+    width: 8vw;    
+    height: 3vw;   
+    font-size: 1.5vw; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 0.5vw;
+    background: #FF9800; 
+    border: 2px solid #FFFFFF; 
+    border-radius: 1.5vw; 
+    font-family: 'Lilita One', cursive;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 0px #B26A00; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    z-index: 50;
+}
+
+/* =========================================
+   HOTSPOT SPEAKER BESAR
+========================================= */
+.speaker-main {
+    position: absolute;
+    top: 35%; /* Perkiraan tinggi ikon speaker */
+    left: 50%; /* Tepat di tengah */
+    transform: translate(-50%, -50%);
+    width: 9.4vw; 
+    height: 9vw;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    background: transparent; 
+    border: 2px transparent;
+}
+
+.speaker-main:active {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: 0.1s;
+}
+
+/* =========================================
+   HOTSPOT TIGA KARTU GAMBAR
+========================================= */
+.card-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 19.8vw;   /* Sesuaikan dengan lebar kartu di gambar */
+    height: 23.2vw;  /* Sesuaikan dengan tinggi kartu di gambar */
+    border-radius: 2vw; 
+    cursor: pointer;
+    z-index: 10;
+    background: transparent; 
+    border: none;
+}
+
+/* Perkiraan Posisi 3 Kartu (Bunga, Harimau, Pohon) */
+#btn-flower { top: 67.2%; left: 28.3%; }
+#btn-tiger  { top: 67%; left: 51%; }
+#btn-tree   { top: 67%; left: 73%; }
+
+/* Animasi Jawaban */
+.wrong-shake { animation: shake 0.5s ease-in-out; background: rgba(255, 0, 0, 0.4) !important; }
+@keyframes shake {
+    0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+    20%, 60% { transform: translate(-50%, -50%) translateX(-1vw); }
+    40%, 80% { transform: translate(-50%, -50%) translateX(1vw); }
+}
+
+.correct-glow {
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 30px #FFD700, inset 0 0 20px #FFF;
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   POP-UP & MODAL (Sama persis)
+========================================= */
+.modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 999; }
+.modal-image-container { position: relative; width: 45vw; animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.popup-img { width: 100%; display: block; }
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.hotspot-try-again { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); width: 35vw; height: 15vw; border-radius: 3vw; cursor: pointer; background: transparent; border: none; }
+
+/* Tombol Next Ekstra Mungil */
+/* =========================================
+   TOMBOL NEXT (EKSTRA MUNGIL)
+========================================= */
+#nextBtnPopup {
+    position: absolute; /* PERBAIKAN 1: Diganti jadi absolute agar nempel sama pop-up */
+    bottom: 12%; /* Mengikuti kordinat pop-up */
+    left: 50%; /* Taruh di tengah */
+    
+    width: 10vw; height: 3.5vw; 
+    display: flex; justify-content: center; align-items: center; 
+    font-size: 1.8vw; border: 2px solid #FFFFFF; border-radius: 50px; 
+    cursor: pointer; z-index: 1000; 
+    font-family: 'Lilita One', cursive; color: #FFFFFF; letter-spacing: 1px; 
+    text-shadow: 1px 2px 0px #00600F, 0px 0px 5px rgba(255,255,255,0.4);
+    background: linear-gradient(180deg, #048b4ad6 0%, #00c853d2 100%); 
+    box-shadow: 0 4px 0 #008236, 0 6px 10px rgba(108, 4, 4, 0.695), inset 0 2px 0 rgba(255,255,255,0.7);
+    
+    animation: cuteBounceRightExtra 2s infinite ease-in-out; 
+    transition: filter 0.15s ease;
+}
+
+/* PERBAIKAN 2: Karena pakai absolute left 50%, semua animasi harus dipasangi translateX(-50%) agar letaknya tetap di tengah */
+#nextBtnPopup:hover { 
+    filter: brightness(1.1); 
+    animation: none; 
+    transform: translateX(-50%) scale(1.1) rotate(3deg); 
+}
+
+#nextBtnPopup:active { 
+    transform: translateX(-50%) translateY(4px) scale(0.95); 
+    box-shadow: 0 0 0 #008236, 0 3px 6px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.7); 
+}
+
+@keyframes cuteBounceRightExtra {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+    50% { transform: translateX(-50%) translateY(-4px) scale(1.05, 0.95); }
+}

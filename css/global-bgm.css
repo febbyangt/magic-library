@@ -1,0 +1,26 @@
+/* =========================================
+   TOMBOL BGM (SPEAKER) - POJOK KIRI ATAS
+========================================= */
+.bgm-btn {
+    position: absolute !important; 
+    top: 49vw !important; 
+    left: 3vw !important; 
+    width: 2.7vw !important; 
+    height: 2.7vw !important;
+    border-radius: 50%;
+    background: rgba(25, 30, 80, 0.8) !important; 
+    border: 3px solid #4facfe !important;
+    color: white !important;
+    font-size: 2.8vw !important; 
+    cursor: pointer;
+    z-index: 999999 !important; 
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5) !important;
+    transition: transform 0.2s;
+    font-family: sans-serif !important; 
+}
+
+.bgm-btn:hover { transform: scale(1.1); filter: brightness(1.2); }
+.bgm-btn:active { transform: scale(0.9); }

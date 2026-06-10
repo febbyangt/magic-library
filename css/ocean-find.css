@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#02162f;}
+
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; max-width:177.78vh; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; z-index: 0; }
+
+/* =========================================
+   KOTAK INSTRUKSI
+========================================= */
+.instruction-box {
+    position: absolute; top: 18%; left: 50%; transform: translateX(-50%);
+    background: #FFF3E0; border: 4px solid #FFCC80; border-radius: 1.5vw;
+    padding: 1vw 3vw; text-align: center; font-family: 'Comic Sans MS', cursive;
+    font-size: 2vw; font-weight: bold; color: #000; z-index: 50;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.highlight { color: #4A148C; font-family: 'Lilita One', cursive; font-size: 2.5vw; letter-spacing: 2px;}
+
+/* =========================================
+   PAPAN SKOR
+========================================= */
+#scoreBoard {
+    position: absolute; top: 3%; right: 3%; padding: 0.5vw 1.5vw; border-radius: 2vw;
+    background: linear-gradient(180deg, #309af0 0%, #18bef5 100%); border: 3px solid #ffffff;
+    font-family: 'Lilita One', cursive; font-size: 1.8vw; color: white; letter-spacing: 1px; z-index: 5000; 
+    box-shadow: 0 4px 0 #F57C00, 0 6px 10px rgba(0, 0, 0, 0.3), inset 0 4px 0 rgba(255, 255, 255, 0.6); 
+    text-shadow: 1.5px 1.5px 0 #E65100, -1px -1px 0 #E65100, 1px -1px 0 #E65100, -1px 1px 0 #E65100, 1px 1px 0 #E65100;
+}
+
+/* =========================================
+   POSISI AWAL HEWAN (Silakan di-tuning top/left-nya nanti)
+========================================= */
+.animal-sprite {
+    position: absolute; cursor: pointer; z-index: 20;
+    transition: transform 0.2s ease; /* Efek membesar dikit saat disentuh kursor */
+}
+.animal-sprite:hover { filter: brightness(1.1); }
+
+/* Perkiraan Posisi & Ukuran dari Screenshot */
+#anim-jellyfish { top: 21%; left: 83%; width: 17vw; }
+#anim-shark     { top: 37%; left: 39%; width: 20vw; }
+#anim-turtle    { top: 5%;  left: 64%; width: 14vw; }
+#anim-seahorse { top: 5%; left: 25%; width: 8vw; }
+#anim-boat      { top: 1%;  left: 48%; width: 8vw; }
+#anim-starfish  { bottom: 5%; left: 7%;  width: 18vw; }
+#anim-crab      { bottom: 3%; right: 6%; width: 16vw; }
+
+
+/* =========================================
+   ANIMASI CSS UNTUK HEWAN
+========================================= */
+/* Mengambang naik turun (Ubur-ubur) */
+.float-slow { animation: floatAnim 4s ease-in-out infinite; }
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Berenang maju mundur pelan (Hiu) */
+.swim-horizontal { animation: swimHAnim 6s ease-in-out infinite; }
+@keyframes swimHAnim {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-30px); }
+}
+
+/* Mengayun seperti kena arus (Kuda Laut) */
+.sway { animation: swayAnim 5s ease-in-out infinite; transform-origin: bottom center; }
+@keyframes swayAnim {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+/* Berdenyut membesar-mengecil (Bintang Laut) */
+.pulse { animation: pulseAnim 3s ease-in-out infinite; }
+@keyframes pulseAnim {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Mengambang di permukaan air (Kapal) */
+.bobbing { animation: bobbingAnim 2s ease-in-out infinite; }
+@keyframes bobbingAnim {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+/* Jalan ke samping pelan (Kepiting) */
+.side-to-side { animation: sideAnim 4s ease-in-out infinite; }
+@keyframes sideAnim {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(15px); }
+}
+
+/* Berenang miring (Penyu) */
+.swim-slow { animation: swimSlowAnim 7s ease-in-out infinite; }
+@keyframes swimSlowAnim {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 10px); }
+}
+
+/* =========================================
+   POP-UP & TOMBOL NEXT (Gaya Jelly)
+========================================= */
+#overlay { display: none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0, 0, 0, 0.7); z-index: 9000; }
+#feedbackBox { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 45vw; height: 35vw; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 9999; }
+.actionBtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 25vw; height: 12vw; background: transparent; border: none; cursor: pointer; z-index: 10000; }
+.nextBtn {
+    position: absolute; 
+    bottom: 26%;  /* Menggunakan % agar responsif mengikuti layar */
+    right: 36.7%;   /* Menggunakan % agar jarak dari kanan selalu pas */
+    width: 12vw; /* Menggunakan vw agar proporsional mengecil/membesar */
+    height: 5vw; 
+    
+    /* Gradien pink ceria (mirip palevioletred tapi lebih hidup) */
+    background: linear-gradient(180deg, #ff8da2de 0%, #d84360 100%);
+    color: white; 
+    font-family: 'Lilita One', 'Comic Sans MS', cursive;
+    font-size: 2vw; 
+    font-weight: bold;
+    border-radius: 50px; 
+    border: 4px solid white;
+    cursor: pointer; 
+    z-index: 10000; 
+
+    /* --- UBAH INI SEMENTARA UNTUK TESTING --- */
+    /* Ganti jadi 'none' lagi nanti jika ingin dimunculkan lewat JavaScript */
+    display: block; 
+
+    /* EFEK 3D GLOSSY */
+    box-shadow: 
+        0 8px 0 #a3223f, /* Bayangan 3D tebal di bawah */
+        0 15px 20px rgba(0,0,0,0.4), /* Bayangan jatuh */
+        inset 0 8px 0 rgba(255,255,255,0.5); /* Kilap di atas */
+        
+    /* Outline teks agar tegas */
+    text-shadow: 2px 2px 0 #a3223f, -1px -1px 0 #a3223f, 1px -1px 0 #a3223f, -1px 1px 0 #a3223f, 2px 2px 0 #a3223f;
+
+    /* Menambahkan animasi berdenyut */
+    animation: tombolDenyut 1.5s infinite;
+    transition: all 0.1s ease;
+}
+
+/* Efek saat tombol DIPENCET (Amblas ke dalam) */
+.nextBtn:active {
+    /* Tombol turun sesuai ketebalan 3D-nya */
+    transform: translateX(-50%) translateY(8px);
+    
+    /* Ketebalan bawah hilang, sisa bayangan tipis */
+    box-shadow: 
+        0 0 0 #006b9e, 
+        0 5px 5px rgba(0, 0, 0, 0.3), 
+        inset 0 4px 0 rgba(255, 255, 255, 0.5);
+}

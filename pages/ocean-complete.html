@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission Complete</title>
+    <link rel="stylesheet" href="../css/ocean-complete.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="completeScreen">
+        <img src="../assets/backgrounds/ocean_complete.png" class="bg" alt="Magic Book Background">
+
+        <div class="book-content">
+            <h1 class="mission-title">MISSION COMPLETE!</h1>
+            
+            <div class="score-area">
+                <span class="label-skor">TOTAL SCORE:</span> 
+                <span class="score-val">0</span> 
+                <span class="label-skor">/ 100</span>
+            </div>
+            
+            <div class="stars-row">
+                <div class="star-icon">★</div>
+                <div class="star-icon">★</div>
+                <div class="star-icon">★</div>
+            </div>
+
+            <div class="reward-box">
+                <p class="reward-label">REWARD EARNED:</p>
+                <div class="items-row">
+                    <span>🪙 100</span> <span>🐚 x5</span> <span>⚪ x3</span> <span>🎁 x1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-row">
+            
+            <button class="btn-action orange" onclick="localStorage.setItem('totalScore', 0); window.location.href='./ocean-introduce.html'">
+                PLAY AGAIN
+            </button>
+            
+            <button class="btn-action green" onclick="window.location.href='./jungle-introduce.html'">
+                NEXT MISSION
+            </button>
+            
+            <button class="btn-action blue" onclick="localStorage.setItem('totalScore', 0); window.location.href='./library.html'">
+                BACK TO LIBRARY
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        localStorage.setItem("oceanScore", "100");
+    </script>
+
+    <script src="../js/ocean-complete.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle - Match Word</title>
+    <link rel="stylesheet" href="../css/jungle-match.css">
+    <link rel="stylesheet" href="../css/global-bgm.css">
+    <link rel="stylesheet" href="../css/global-wrap.css">
+</head>
+<body>
+    <div class="screen" id="gameScreen">
+        <img src="../assets/backgrounds/jungle_match.png" class="bg" alt="Jungle Match Background">
+
+        <audio id="audioCorrect" src="../assets/audio/correct.mp3"></audio>
+        <audio id="audioWrong" src="../assets/audio/wrong.mp3"></audio>
+
+        <div class="score-board">
+            ⭐ <span id="score-text">0</span>
+        </div>
+
+        <div class="drag-container">
+            <div class="drag-item" draggable="true" id="word-flower" data-match="flower">FLOWER</div>
+            <div class="drag-item" draggable="true" id="word-monkey" data-match="monkey">MONKEY</div>
+            <div class="drag-item" draggable="true" id="word-tree" data-match="tree">TREE</div>
+            <div class="drag-item" draggable="true" id="word-tiger" data-match="tiger">TIGER</div>
+        </div>
+
+        <div class="drop-zone" id="drop-tiger" data-match="tiger"></div>
+        <div class="drop-zone" id="drop-tree" data-match="tree"></div>
+        <div class="drop-zone" id="drop-flower" data-match="flower"></div>
+        <div class="drop-zone" id="drop-monkey" data-match="monkey"></div>
+
+        <div id="wrongModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_tryagain.png" alt="Oops Try Again" class="popup-img">
+                <button class="hotspot-try-again" onclick="closeModal()"></button>
+            </div>
+        </div>
+
+        <div id="correctModal" class="modal-overlay">
+            <div class="modal-image-container">
+                <img src="../assets/buttons/jungle_excellent.png" alt="Success!" class="popup-img">
+                <button id="nextBtnPopup" onclick="window.location.href='./jungle-fill.html'">NEXT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jungle-match.js"></script>
+    <script src="../js/global-bgm.js"></script>
+    <script src="../js/global-wrap.js"></script>
+</body>
+</html>

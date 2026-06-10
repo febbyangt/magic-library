@@ -1,0 +1,129 @@
+/* ==================== RESET REBOOT ==================== */
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%; height: 100%;
+    overflow: hidden; 
+    background-color: #0b0914;
+}
+
+/* ==================== SKALA KONTENER (NORMAL) ==================== */
+/* Dikembalikan ke proporsi asli layar karena isi elemen sudah 4x lebih kecil */
+.library-container {
+    position: relative;
+    width: 100vw; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* BACKGROUND */
+.bg {
+    position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 1;
+}
+
+/* ==================== DIALOG BOX ==================== */
+.dialog-box {
+    position: absolute; bottom: 3%; left: 7%; width: 425px; /* 1700px / 4 */
+    background-color: #fdf6e2; border: 3.5px solid #e9c341; 
+    border-radius: 21.25px; padding: 22.5px 25px 20px 25px; z-index: 30;
+    box-shadow: 0 6.25px 15px rgba(0, 0, 0, 0.45), 0 0 12.5px rgba(233, 195, 65, 0.35);
+    animation: dreamyFloat 4.5s ease-in-out infinite; 
+}
+
+.name-badge {
+    position: absolute; top: -13.75px; left: 18.75px;
+    background-color: #e9c341; color: white; font-family: 'Georgia', serif;
+    font-size: 14px; font-weight: bold; padding: 5px 22.5px;
+    border-radius: 11.25px; box-shadow: 0 2.5px 6.25px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-text { font-family: 'Georgia', serif; color: #5c4017; line-height: 1.7; }
+.dialog-text .line1 { font-size: 22.5px; font-weight: bold; margin-bottom: 8.75px; }
+.dialog-text .line2, .dialog-text .line3 { font-size: 20px; font-weight: 500; margin-bottom: 2.5px; }
+
+.dialog-arrow {
+    position: absolute; bottom: -11px; left: 40px;
+    width: 18.75px; height: 18.75px; background-color: #fdf6e2;
+    border-left: 3.5px solid #e9c341; border-bottom: 3.5px solid #e9c341;
+    transform: rotate(-45deg);
+}
+
+/* ==================== LEO & BUKU ==================== */
+#leo { position: absolute; width: 210px; left: 50%; bottom: 5%; transform: translateX(-50%); z-index: 5; }
+
+#oceanBook, #spaceBook, #jungleBook {
+    position: absolute; z-index: 10; cursor: pointer; transition: filter 0.3s ease;
+}
+
+#oceanBook { width: 145px; left: 17%; top: 24%; animation: bookFloat 4s ease-in-out infinite; filter: drop-shadow(0 0 8.75px #4FC3F7); }
+#spaceBook { width: 145px; left: 71%; top: 24%; animation: bookFloat 4.5s ease-in-out infinite; animation-delay: 1s; filter: drop-shadow(0 0 8.75px #BA68C8); }
+#jungleBook { width: 145px; left: 44.5%; top: 14%; animation: bookFloat 5s ease-in-out infinite; animation-delay: 2s; filter: drop-shadow(0 0 8.75px #81C784); }
+
+#oceanBook:hover, #spaceBook:hover, #jungleBook:hover { filter: drop-shadow(0 0 17.5px gold) brightness(1.2) !important; }
+
+/* ==================== BADGE CEKLIS ==================== */
+.badge-ceklis {
+    position: absolute; width: 50px; z-index: 20; display: none; pointer-events: none; 
+    filter: drop-shadow(0 2.5px 3.75px rgba(0,0,0,0.5));
+}
+
+#oceanCheck { left: calc(18.7% + 42.5px); top: 37%; animation: bookFloat 4s ease-in-out infinite; }
+#spaceCheck { left: calc(72.5% + 42.5px); top: 37.4%; animation: bookFloat 4.5s ease-in-out infinite; animation-delay: 1s; }
+#jungleCheck { left: calc(46.2% + 42.5px); top: 26.4%; animation: bookFloat 5s ease-in-out infinite; animation-delay: 2s; }
+
+/* ==================== ANIMASI ==================== */
+@keyframes dreamyFloat {
+    0%, 100% { transform: translateY(0); box-shadow: 0 6.25px 15px rgba(0, 0, 0, 0.45), 0 0 12.5px rgba(233, 195, 65, 0.35); }
+    50% { transform: translateY(-5px); box-shadow: 0 11.25px 20px rgba(0, 0, 0, 0.35), 0 0 18.75px rgba(233, 195, 65, 0.55); }
+}
+
+@keyframes bookFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6.25px) scale(1.04); } 
+}
+
+/* ==================== POP-UP ENDING ==================== */
+/* ==================== POP-UP ENDING ==================== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    background: rgba(0, 0, 0, 0.7); display: none; 
+    justify-content: center; align-items: center; z-index: 9999; 
+}
+
+.ending-box {
+    position: relative; background: #fdf6e2; border: 6px solid #FF9800; border-radius: 30px;
+    width: 700px; max-width: 80vw; text-align: center; padding: 40px; z-index: 10000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 40px rgba(255, 152, 0, 0.6);
+}
+
+.btn-close-popup {
+    position: absolute; top: -20px; right: -20px; width: 45px; height: 45px;
+    background: #F44336; color: white; border: 4px solid white; border-radius: 50%;
+    font-size: 24px; cursor: pointer; display: flex; justify-content: center; align-items: center;
+    transition: transform 0.2s;
+}
+
+.btn-close-popup:hover { transform: scale(1.1) rotate(90deg); }
+
+.ending-title { font-family: 'Lilita One', cursive; font-size: 45px; color: #FF5722; margin-top: 10px; }
+.ending-text { font-family: 'Georgia', serif; font-size: 22px; color: #5c4017; margin: 20px 0; }
+.badges-showcase { display: flex; justify-content: center; gap: 25px; margin: 20px 0; }
+.badges-showcase img { width: 100px; animation: badgeFloat 3s infinite ease-in-out; }
+
+@keyframes badgeFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* ==================== TOMBOL PLAY AGAIN ==================== */
+#btnPlayAgainGlobal {
+    margin-top: 25px; padding: 15px 40px;
+    font-family: 'Lilita One', cursive; font-size: 26px; color: white;
+    background: linear-gradient(180deg, #ff684d 0%, #ff7300c6 100%);
+    border: 3px solid white; border-radius: 40px; cursor: pointer;
+    box-shadow: 0 5px 0 #EF6C00; transition: 0.2s;
+    animation: buttonPulse 2s infinite ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}

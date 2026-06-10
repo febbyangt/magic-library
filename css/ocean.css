@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #030b1e; /* Warna gelap agar menyatu jika ada sisa ruang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Kunci ukuran container ke aspek rasio 16:9 agar presisi */
+.ocean-container {
+    position: relative;
+    width: 100vw;
+    height: 56.25vw; 
+    max-width: 100%;
+    max-height: 100vh;
+}
+
+.ocean-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ganti dari cover ke contain agar gambar tidak ter-crop */
+    display: block;
+}
+
+/* HOTSPOT START YANG SUDAH DI-FIX */
+#startBtn {
+    position: absolute;
+
+    /* Ubah px menjadi persentase agar ukurannya responsif mengikuti gambar */
+    width: 15%;
+    height: 8.5%;
+
+    /* Posisikan persis di area tombol Start */
+    left: 50%;
+    bottom: 3.5%; 
+
+    transform: translateX(-50%);
+
+    /* Tambahkan lengkungan agar kotak merahnya berbentuk kapsul pas dengan tombol */
+    border-radius: 50px;
+
+    /* Warna dibiarkan merah transparan dulu untuk alat bantu (testing) */
+    background:transparent; 
+
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}

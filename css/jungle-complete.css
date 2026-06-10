@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#1B5E20; font-family: 'Lilita One', cursive; }
+
+.screen { position:relative; width:100vw; height:56.25vw; max-height:100vh; overflow: hidden; }
+.bg { width:100%; height:100%; position: absolute; top:0; left:0; }
+
+.book-content {
+    position: absolute;
+    top: 38%; left: 29.6%; width: 42%;
+    text-align: center;
+    z-index: 5;
+}
+
+.mission-title { font-size: 3vw; color: #2b7902; margin-bottom: 0.3vw; }
+.score-val { color: #D84315; font-size: 3.9vw; }
+.stars-row { display: flex; justify-content: center; gap: 0.3vw; margin: 0.3vw 0; }
+.star-icon { font-size: 3vw; color: #000000; transform: scale(0); transition: 0.5s; text-shadow: 0 0 10px #FF9800; }
+.star-icon.pop-animation { transform: scale(1); }
+
+.score-area { display: flex; justify-content: center; align-items: baseline; gap: 1vw; margin: 1.5vw 0; }
+.label-skor { font-size: 2vw; color: #5D4037; }
+.reward-label { font-size: 1.6vw; color: #5D4037; font-weight: bold; }
+.items-row { display: flex; justify-content: center; gap: 1vw; font-size: 1.5vw; color: #5D4037; }
+
+/* Tombol Navigasi */
+.button-row { position: absolute; bottom: 5%; left: 51%; transform: translateX(-50%); display: flex; gap: 2.2vw; z-index: 100; }
+.btn-action { 
+    padding: 1vw 2vw; font-family: 'Lilita One', cursive; font-size: 1.5vw; color: white; 
+    border: 4px solid white; border-radius: 50px; cursor: pointer; text-shadow: 1px 2px 0px rgba(0,0,0,0.4);
+    transition: all 0.2s; animation: idleBounce 2.5s infinite ease-in-out;
+}
+.btn-action.orange { background: linear-gradient(180deg, #ffb84dac, #F57C00); box-shadow: 0 8px 0 #E65100; }
+.btn-action.green  { background: linear-gradient(180deg, #81c784b3, #388E3C); box-shadow: 0 8px 0 #1B5E20; }
+.btn-action.blue   { background: linear-gradient(180deg, #4fc2f7b9, #0288D1); box-shadow: 0 8px 0 #01579B; }
+.btn-action:hover { transform: scale(1.08); animation-play-state: paused; }
+.btn-action:active { transform: translateY(8px) scale(0.95); box-shadow: none; }
+
+@keyframes idleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
