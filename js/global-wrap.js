@@ -20,18 +20,25 @@ document.addEventListener("DOMContentLoaded", function initGame() {
     setTimeout(() => { overlay.style.opacity = "0"; }, 100);
 
     // 2. TOMBOL HOME
-    const isLibraryPage = window.location.pathname.toLowerCase().includes("library");
-    if (!isLibraryPage) {
-        const homeBtn = document.createElement("button");
+    document.addEventListener("DOMContentLoaded", () => {
+    const currentFile = window.location.pathname.split("/").pop().toLowerCase();
+
+    const isMainPage =
+        currentFile === "" ||
+        currentFile === "index.html" ||
+        currentFile === "library.html";
+
+    if (!isMainPage) {
+        const homeBtn = document.createElement("a");
+        homeBtn.href = "../index.html";
         homeBtn.className = "home-btn-global";
         homeBtn.innerHTML = "🏠";
-        homeBtn.title = "Back to Library";
-        gameContainer.appendChild(homeBtn);
-        homeBtn.addEventListener("click", () => {
-            overlay.style.opacity = "1";
-            setTimeout(() => { window.location.href = "./library.html"; }, 800);
-        });
+        homeBtn.title = "Back to Home";
+        document.body.appendChild(homeBtn);
     }
+
+    document.querySelectorAll(".fullscreen-btn-global").forEach(btn => btn.remove());
+});
 
     // 3. LOGIKA LIBRARY
     if (isLibraryPage) {
